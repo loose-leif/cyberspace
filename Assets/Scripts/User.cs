@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class User : MonoBehaviour
 {
-    Rigidbody rb;
-    float xin;
-    float zin;
-    float moveSpeed;
+    
 
     // Start is called before the first frame update
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>(); // rb
+       // rb = GetComponent<Rigidbody>(); // rb
 
     }
     void Start()
@@ -23,21 +20,29 @@ public class User : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        xin = Input.GetAxis("Horizontal"); //  left  and right keys
-        zin = Input.GetAxis("Vertical"); // up and down 
-        Debug.Log(xin);
-        Debug.Log(zin);
+        
 
        if (Input.GetKeyDown(KeyCode.W)) // ignore for now place holder for better movement
         {
-
+            transform.position += Vector3.forward;
+        }
+       if (Input.GetKeyDown(KeyCode.A))
+        {
+            transform.position += Vector3.left;
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            transform.position += Vector3.right;
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            transform.position += Vector3.back;
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            transform.position += new Vector3(0,2,0);
         }
     }
-    private void FixedUpdate()
-    {
-        float xVelocity = xInput * moveSpeed;
-        float zVelocity = zInput * moveSpeed;
-
-        rb.velocity = new Vector3(xVelocity, rb.velocity.y, zVelocity); // simple movement 
-    }
+    
+ 
 }
