@@ -289,7 +289,7 @@ MonoBehaviour:
   PlayerCamera: {fileID: 881808066}
   PlayerBody: {fileID: 842101392}
   Speed: 10
-  Sensitivity: 10
+  Sensitivity: 18
   Jumpforce: 10
 --- !u!114 &842101394
 MonoBehaviour:
