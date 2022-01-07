@@ -1,14 +1,16 @@
-using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-// nathan rowe
-//gun scripts taken from https://learn.unity.com/tutorial/let-s-try-shooting-with-raycasts?signup=true#
+// nathan
+// gun scripts taken from https://learn.unity.com/tutorial/let-s-try-shooting-with-raycasts?signup=true#
+// this script is based of RayCastShoot, and is fined tuned for Rifle properties
 
-public class RayCastShoot : MonoBehaviour {
-
-	public int gunDamage = 1;											// Set the number of hitpoints that this gun will take away from shot objects with a health script
-	public float fireRate = 0.25f;										// Number in seconds which controls how often the player can fire
-	public float weaponRange = 50f;										// Distance in Unity units over which the player can fire
+public class Rifle : MonoBehaviour
+{
+	public int gunDamage = 35;											// Set the number of hitpoints that this gun will take away from shot objects with a health script
+	public float fireRate = 0.35f;										// Number in seconds which controls how often the player can fire
+	public float weaponRange = 50f;								    // Distance in Unity units over which the player can fire
 	public float hitForce = 100f;										// Amount of force which will be added to objects with a rigidbody shot by the player
 	public Transform gunEnd;											// Holds a reference to the gun end object, marking the muzzle location of the gun
 
@@ -31,7 +33,7 @@ public class RayCastShoot : MonoBehaviour {
 	void Update () 
 	{
 		// Check if the player has pressed the fire button and if enough time has elapsed since they last fired
-		if (Input.GetButtonDown("Fire1") && Time.time > nextFire) 
+		if (Input.GetButton("Fire1") && Time.time > nextFire) 
 		{
 			// Update the time when our player can fire next
 			nextFire = Time.time + fireRate;
@@ -92,3 +94,4 @@ public class RayCastShoot : MonoBehaviour {
 		laserLine.enabled = false;
 	}
 }
+
