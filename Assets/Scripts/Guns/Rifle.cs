@@ -13,6 +13,8 @@ public class Rifle : MonoBehaviour
 	public float weaponRange = 50f;								    // Distance in Unity units over which the player can fire
 	public float hitForce = 100f;										// Amount of force which will be added to objects with a rigidbody shot by the player
 	public Transform gunEnd;											// Holds a reference to the gun end object, marking the muzzle location of the gun
+	public ParticleSystem muzzleFlash;
+	public AudioSource soundEffect;
 
 	private Camera fpsCam;												// Holds a reference to the first person camera
 	private WaitForSeconds shotDuration = new WaitForSeconds(0.07f);	// WaitForSeconds object used by our ShotEffect coroutine, determines time laser line will remain visible
@@ -84,6 +86,8 @@ public class Rifle : MonoBehaviour
 
 	private IEnumerator ShotEffect()
 	{
+		soundEffect.Play();
+		muzzleFlash.Play();
 		// Turn on our line renderer
 		laserLine.enabled = true;
 
