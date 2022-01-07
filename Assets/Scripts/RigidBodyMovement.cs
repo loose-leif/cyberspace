@@ -7,7 +7,7 @@ public class RigidBodyMovement : MonoBehaviour
     private Vector3 PlayerMovementInput;
     private Vector3 PlayerMouseInput;
     private float xRot;
-    //trying to communicate with git. - Nathan
+    
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private Transform FeetTransform;
     [SerializeField] private Transform PlayerCamera;
