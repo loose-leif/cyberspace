@@ -29,7 +29,9 @@ public class MoveTo : MonoBehaviour
           } else {
 
             agent.enabled =false;
-            parentModel.position = new Vector3(parentModel.position.x + Mathf.Cos(Time.frameCount),parentModel.position.y,parentModel.position.z + Mathf.Sin(Time.frameCount));
+            parentModel.position =  new Vector3(parentModel.position.x + 10*Mathf.Cos(Time.frameCount),
+                                                parentModel.position.y,
+                                                parentModel.position.z + 10*Mathf.Sin(Time.frameCount));
 
           }
           
