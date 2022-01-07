@@ -21,8 +21,8 @@ public class RigidBodyMovement : MonoBehaviour
     void Update()
     {
         PlayerMovementInput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
-        PlayerMouseInput = new Vector3(Input.GetAxis("Mouse X"), 0f, Input.GetAxis("Mouse Y"));
-        
+        PlayerMouseInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+
         MovePlayer();
         MovePlayerCamera();
     }
@@ -31,6 +31,7 @@ public class RigidBodyMovement : MonoBehaviour
     {
         Vector3 MoveVector = transform.TransformDirection(PlayerMovementInput) * Speed;
         PlayerBody.velocity = new Vector3(MoveVector.x, PlayerBody.velocity.y, MoveVector.z);
+
         if(Input.GetKeyDown(KeyCode.Space))
         {
             if(Physics.CheckSphere(FeetTransform.position, 0.1f, groundMask))
@@ -44,7 +45,7 @@ public class RigidBodyMovement : MonoBehaviour
     {
         xRot -= PlayerMouseInput.y * Sensitivity;
 
-        transform.Rotate(0f, PlayerMovementInput.x * Sensitivity, 0f);
+        transform.Rotate(0f, PlayerMouseInput.x * Sensitivity, 0f);
         PlayerCamera.transform.localRotation = Quaternion.Euler(xRot, 0f, 0f);
         
     }
