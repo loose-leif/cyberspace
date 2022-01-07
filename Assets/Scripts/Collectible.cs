@@ -7,9 +7,19 @@ public class Collectible : MonoBehaviour
 {
     public int Collect = 0;
     public Text collectText;
+
+    bool JOHN = false;
     public void Update()
     {
-        collectText.text = "Collectible: " + Collect.ToString();
+        
+        if(JOHN){
+            
+            Collect = Collect + 1;
+            collectText.text = "Collectible: " + Collect.ToString();
+            JOHN = false;
+
+        }
+        
     }
 
 
@@ -19,10 +29,10 @@ public class Collectible : MonoBehaviour
     {
         if(collision.gameObject.tag == "Collectible") // Collision Made with collectible object
         {
-            Collect = Collect + 1;
-            Destroy(collision.gameObject);
             
-
+            JOHN = true;
+            Destroy(collision.gameObject);
+        
 
         }
     }
