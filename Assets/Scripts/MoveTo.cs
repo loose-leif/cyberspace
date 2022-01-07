@@ -12,16 +12,24 @@ public class MoveTo : MonoBehaviour
        public GameObject parentOBJ;
        public bool moving = false;
        
+       private NavMeshAgent agent;
+
+       private void Start() {
+          
+          agent = parentOBJ.GetComponent<NavMeshAgent>();
+
+       }
        void Update () {
 
           if(moving){
 
-            NavMeshAgent agent = parentOBJ.GetComponent<NavMeshAgent>();
+            agent.enabled = true;
             agent.destination = goal.position;
 
           } else {
 
-             parentModel.position = new Vector3(parentModel.position.x + Mathf.Cos(Time.frameCount),parentModel.position.y,parentModel.position.z + Mathf.Sin(Time.frameCount));
+            agent.enabled =false;
+            parentModel.position = new Vector3(parentModel.position.x + Mathf.Cos(Time.frameCount),parentModel.position.y,parentModel.position.z + Mathf.Sin(Time.frameCount));
 
           }
           
