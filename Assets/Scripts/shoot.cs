@@ -25,7 +25,7 @@ public class shoot : MonoBehaviour
             Rigidbody temp_rb; //access rigidbody from instantiated() bullet
             temp_rb = Temp_bullet_Handler.GetComponent<Rigidbody>();
             temp_rb.AddForce(transform.forward * Bullet_Forward_Force); // bullet force 
-            Destroy(Temp_bullet_Handler, 10.0f);
+            Destroy(Temp_bullet_Handler, 3.0f);
 
 
 
