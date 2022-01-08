@@ -15,6 +15,7 @@ public class Rifle : MonoBehaviour
 	public Transform gunEnd;											// Holds a reference to the gun end object, marking the muzzle location of the gun
 	public ParticleSystem muzzleFlash;
 	public AudioSource soundEffect;
+	public GameObject bulletHole;
 
 	private Camera fpsCam;												// Holds a reference to the first person camera
 	private WaitForSeconds shotDuration = new WaitForSeconds(0.07f);	// WaitForSeconds object used by our ShotEffect coroutine, determines time laser line will remain visible
@@ -58,6 +59,13 @@ public class Rifle : MonoBehaviour
 				// Set the end position for our laser line 
 				laserLine.SetPosition (1, hit.point);
 
+				Debug.Log(hit.collider.tag);
+				//checks to see if ray hit a wall.
+				if (hit.collider.tag == "Wall") 
+				{
+					//Spawn the bullet hole just above the surface the raycast hit
+					Instantiate (bulletHole, hit.point, Quaternion.LookRotation(hit.normal));
+				}
 				// Get a reference to a health script attached to the collider we hit
 				ShootableTarget health = hit.collider.GetComponent<ShootableTarget>();
 
