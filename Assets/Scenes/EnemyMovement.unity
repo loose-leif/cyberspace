@@ -228,7 +228,6 @@ GameObject:
   m_Component:
   - component: {fileID: 427116605}
   - component: {fileID: 427116607}
-  - component: {fileID: 427116606}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Enemy
@@ -250,26 +249,6 @@ Transform:
   m_Father: {fileID: 781623642}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &427116606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 427116604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d1afd2f0d223f544bc355323f9dcdde, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goal: {fileID: 5217705457361174285}
-  post1: {fileID: 1901687019}
-  post2: {fileID: 1100291902}
-  post3: {fileID: 338165755}
-  parentModel: {fileID: 781623642}
-  parentOBJ: {fileID: 781623637}
-  moving: 0
-  locals: []
 --- !u!135 &427116607
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -309,6 +288,8 @@ GameObject:
   - component: {fileID: 781623641}
   - component: {fileID: 781623640}
   - component: {fileID: 781623639}
+  - component: {fileID: 781623644}
+  - component: {fileID: 781623643}
   - component: {fileID: 781623638}
   m_Layer: 0
   m_Name: enemy (2)
@@ -409,13 +390,53 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 781623637}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -79.71, y: 9.2, z: 61.09}
+  m_LocalPosition: {x: -142.47, y: 25.75, z: 62.36}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 427116605}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &781623643
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 781623637}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &781623644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 781623637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cee84e5f15ebd4b48a8d937d02d16272, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NavMeshAgent: {fileID: 781623638}
+  Rigidbody: {fileID: 781623643}
+  Target: {fileID: 338165751}
+  ReachedStartPointDistance: 0.5
+  DummyAgent: {fileID: 4088997838483852, guid: 44be76bf460da0e4396deecdf0eaa035, type: 3}
+  EndJumpPosition: {x: 0, y: 0, z: 0}
+  MaxJumpableDistance: 80
+  JumpTime: 0.6
+  AddToJumpHeight: 0
+  check: 0
+  check2: 0
+  JumpStartPoint: {x: 0, y: 0, z: 0}
 --- !u!1 &804042204
 GameObject:
   m_ObjectHideFlags: 0
@@ -1369,7 +1390,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 832149484879803195}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.51, y: 3.191952, z: 0}
+  m_LocalPosition: {x: -6.97, y: 3.191952, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 543450653007521460}
