@@ -34,7 +34,7 @@ public class RigidBodyMovement : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            if(Physics.CheckSphere(FeetTransform.position, 0.1f, groundMask))
+            if(Physics.CheckSphere(FeetTransform.position, 0.2f, groundMask))
             {
                 PlayerBody.AddForce(Vector3.up * Jumpforce, ForceMode.Impulse);
             }
