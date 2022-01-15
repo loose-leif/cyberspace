@@ -17,10 +17,6 @@ public class AgentJumpToTarget : MonoBehaviour
     public float MaxJumpableDistance = 80f;
     public float JumpTime = 0.6f;
     public float AddToJumpHeight;
-
-    public bool check;
-    public bool check2;
-
     Transform _dummyAgent;
     public Vector3 JumpStartPoint;
     Vector3 JumpMidPoint;
@@ -31,6 +27,22 @@ public class AgentJumpToTarget : MonoBehaviour
     float JumpDistance;
     Vector3[] _jumpPath;
     bool previousRigidBodyState;
+
+    private enum State {
+
+        Idle,
+        Active,
+
+    }
+
+    private State jumpState;
+
+    private void Start() {
+        
+        NavMeshAgent.speed = 100;
+        NavMeshAgent.acceleration = 100;
+
+    }
 
     // remove the [Button] code if you don't have Odin
     public void GetStartPointAndMoveToPosition()
@@ -138,17 +150,26 @@ public class AgentJumpToTarget : MonoBehaviour
 
     private void Update()
     {
-        if(check){
+        if(Input.GetButtonDown("Fire1")){
 
             GetStartPointAndMoveToPosition();
-            check=false;
+            jumpState = State.Active;
 
         }
 
-        if(check2){
+        if(Input.GetButtonDown("Fire2")){
+            Debug.Log(Vector3.Magnitude(JumpStartPoint-transform.position));
+
+        }
+
+
+
+        
+
+        if((Vector3.Magnitude(JumpStartPoint-transform.position) < 1) && jumpState==State.Active){
 
             PerformJump();
-            check2=false;
+            jumpState = State.Idle;
 
         }
 
