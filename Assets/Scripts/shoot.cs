@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class shoot : MonoBehaviour
 {
@@ -14,15 +16,18 @@ public class shoot : MonoBehaviour
     public float reloadTime = 2f;
     private bool isreloading = false;
     private int presentAmmo = -1;
+    public Text Ammo;
 
     void Start()
     { if (presentAmmo == -1)
             presentAmmo = maxAmmo;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         if (isreloading)
         { 
             return;
@@ -44,6 +49,7 @@ public class shoot : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             presentAmmo--;
+           
             GameObject Temp_bullet_Handler; // bullet happen
             Temp_bullet_Handler = Instantiate(Bullet, Bullet_Emitter.transform.position, Bullet_Emitter.transform.rotation) as GameObject; //specifies object and postion to instantiate
             Temp_bullet_Handler.transform.Rotate(Vector3.left * 90); // rotation fix
@@ -51,6 +57,8 @@ public class shoot : MonoBehaviour
             temp_rb = Temp_bullet_Handler.GetComponent<Rigidbody>();
             temp_rb.AddForce(transform.forward * Bullet_Forward_Force); // bullet force 
             Destroy(Temp_bullet_Handler,3.0f);
+
+
         }
         if(Input.GetMouseButtonDown(1))
         {
@@ -72,8 +80,17 @@ public class shoot : MonoBehaviour
             presentAmmo = maxAmmo;// reset
             isreloading = false;
             Debug.Log("Finished");
-      
+
+
+
+
         }
+        
 
     }
+    //private void UpdateAmmo()
+   // {
+       // Ammo.text = $"{presentAmmo}: " + presentAmmo.ToString();
+    //}
+
 }
