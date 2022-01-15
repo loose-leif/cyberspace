@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 // nathan
 // gun scripts taken from https://learn.unity.com/tutorial/let-s-try-shooting-with-raycasts?signup=true#
@@ -10,12 +11,18 @@ public class Rifle : MonoBehaviour
 {
 	public int gunDamage = 35;											// Set the number of hitpoints that this gun will take away from shot objects with a health script
 	public float fireRate = 0.155f;										// Number in seconds which controls how often the player can fire
-	public float weaponRange = 50f;								    // Distance in Unity units over which the player can fire
+	public float weaponRange = 50f;									    // Distance in Unity units over which the player can fire
 	public float hitForce = 100f;										// Amount of force which will be added to objects with a rigidbody shot by the player
 	public Transform gunEnd;											// Holds a reference to the gun end object, marking the muzzle location of the gun
 	public ParticleSystem muzzleFlash;
-	public AudioSource soundEffect;
-	public GameObject bulletHole;
+	public AudioSource shootEffect;
+	public AudioSource emptyClipSound;
+	public Text ammoDisplay;
+
+
+	public int maxAmmo = 30;											// MaxAmmo is max ammo capacity.
+	public float reloadTime = 2f;										// Number of seconds it takes to reload.
+	private int currentAmmo = -1;										// Current ammo within the gun
 
 	private Camera fpsCam;												// Holds a reference to the first person camera
 	private WaitForSeconds shotDuration = new WaitForSeconds(0.07f);	// WaitForSeconds object used by our ShotEffect coroutine, determines time laser line will remain visible
@@ -30,14 +37,22 @@ public class Rifle : MonoBehaviour
 
 		// Get and store a reference to our Camera by searching this GameObject and its parents
 		fpsCam = GetComponentInParent<Camera>();
+		
+		// Sets presentAmmo to maxAmmo.
+		if(currentAmmo == -1) {
+			currentAmmo = maxAmmo;
+		}
 	}
 	
 
 	void Update () 
 	{
 		// Check if the player has pressed the fire button and if enough time has elapsed since they last fired
-		if (Input.GetButton("Fire1") && Time.time > nextFire) 
+		// Also doesnt allow to shoot if currentAmmo < 0
+		if ((Input.GetButton("Fire1") && Time.time > nextFire) && currentAmmo > 0) 
 		{
+			//subtracts the ammo by 1
+			currentAmmo--;
 			// Update the time when our player can fire next
 			nextFire = Time.time + fireRate;
 
@@ -59,13 +74,6 @@ public class Rifle : MonoBehaviour
 				// Set the end position for our laser line 
 				laserLine.SetPosition (1, hit.point);
 
-				Debug.Log(hit.collider.tag);
-				//checks to see if ray hit a wall.
-				if (hit.collider.tag == "Wall") 
-				{
-					//Spawn the bullet hole just above the surface the raycast hit
-					Instantiate (bulletHole, hit.point, Quaternion.LookRotation(hit.normal));
-				}
 				// Get a reference to a health script attached to the collider we hit
 				ShootableTarget health = hit.collider.GetComponent<ShootableTarget>();
 
@@ -89,12 +97,26 @@ public class Rifle : MonoBehaviour
                 laserLine.SetPosition (1, rayOrigin + (fpsCam.transform.forward * weaponRange));
 			}
 		}
+
+		// There is no ammo in the gun so make empty clip sound effect.
+		if(currentAmmo == 0) {
+			EmptyClip();
+		}
+
+		//reload function bound to 'R'.
+		if (Input.GetKeyDown(KeyCode.R))
+		{
+			StartCoroutine(Reload());
+		}
+
+		//updates the current ammo to HUD ui.
+		ammoDisplay.text = AmmoDisplayUpdate();
 	}
 
 
 	private IEnumerator ShotEffect()
 	{
-		soundEffect.Play();
+		shootEffect.Play();
 		muzzleFlash.Play();
 		// Turn on our line renderer
 		laserLine.enabled = true;
@@ -105,5 +127,22 @@ public class Rifle : MonoBehaviour
 		// Deactivate our line renderer after waiting
 		laserLine.enabled = false;
 	}
+
+	private void EmptyClip()
+	{
+		emptyClipSound.Play();
+	}
+
+	private IEnumerator Reload() // the time it takes to reload and resets presentAmmo
+        {
+            yield return new WaitForSeconds(reloadTime); // reloading...
+            currentAmmo = maxAmmo; // reset
+        }
+
+	// displays the ammo to UI
+	private string AmmoDisplayUpdate()
+		{
+			return currentAmmo.ToString() + "/" + maxAmmo.ToString();
+		}
 }
 

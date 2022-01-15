@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // nathan
-//gun scripts taken from https://learn.unity.com/tutorial/let-s-try-shooting-with-raycasts?signup=true#
-//this script is based of RayCastShoot, and is fined tuned for pistol properties
+// gun scripts taken from https://learn.unity.com/tutorial/let-s-try-shooting-with-raycasts?signup=true#
+// this script is based of RayCastShoot, and is fined tuned for pistol properties
 
 public class Pistol : MonoBehaviour {
 
