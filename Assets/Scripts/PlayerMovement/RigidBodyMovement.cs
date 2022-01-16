@@ -23,6 +23,15 @@ public class RigidBodyMovement : MonoBehaviour
         PlayerMovementInput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
         PlayerMouseInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
 
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if(TryGetComponent<ItemObject>(out ItemObject item))
+            {
+                item.OnHandlePickupItem();
+            }
+        }
+
         MovePlayer();
         MovePlayerCamera();
     }
@@ -51,4 +60,5 @@ public class RigidBodyMovement : MonoBehaviour
         PlayerCamera.transform.localRotation = Quaternion.Euler(xRot, 0f, 0f);
         
     }
+
 }

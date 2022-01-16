@@ -7,6 +7,8 @@ using UnityEngine.UI;
 // gun scripts taken from https://learn.unity.com/tutorial/let-s-try-shooting-with-raycasts?signup=true#
 // this script is based of RayCastShoot, and is fined tuned for Rifle properties
 
+// Added Adam's reload system to it with minor tweaks.
+
 public class Rifle : MonoBehaviour
 {
 	public int gunDamage = 35;											// Set the number of hitpoints that this gun will take away from shot objects with a health script
@@ -16,8 +18,11 @@ public class Rifle : MonoBehaviour
 	public Transform gunEnd;											// Holds a reference to the gun end object, marking the muzzle location of the gun
 	public ParticleSystem muzzleFlash;
 	public AudioSource shootEffect;
-	public AudioSource emptyClipSound;
 	public Text ammoDisplay;
+
+	//public AudioSource emptyClipSound;
+	// was working with emptyclip sound but it is kinda buggy right now.
+	// if you would want try to fix it..
 
 
 	public int maxAmmo = 30;											// MaxAmmo is max ammo capacity.
@@ -98,10 +103,11 @@ public class Rifle : MonoBehaviour
 			}
 		}
 
+		// IF THERE ARE NO BULLETS PLAY THE EMPTY CLIP SOUND.
 		// There is no ammo in the gun so make empty clip sound effect.
-		if(currentAmmo == 0) {
-			EmptyClip();
-		}
+		//if(currentAmmo == 0) {
+		//	EmptyClip();
+		//}
 
 		//reload function bound to 'R'.
 		if (Input.GetKeyDown(KeyCode.R))
@@ -128,10 +134,11 @@ public class Rifle : MonoBehaviour
 		laserLine.enabled = false;
 	}
 
-	private void EmptyClip()
-	{
-		emptyClipSound.Play();
-	}
+	//function used to play the broken emptyClip mechanic..
+	//private void EmptyClip()
+	//{
+	//	emptyClipSound.Play();
+	//}
 
 	private IEnumerator Reload() // the time it takes to reload and resets presentAmmo
         {
