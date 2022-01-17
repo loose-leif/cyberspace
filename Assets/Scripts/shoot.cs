@@ -16,7 +16,7 @@ public class shoot : MonoBehaviour
     public float reloadTime = 2f;
     private bool isreloading = false;
     private int presentAmmo = -1;
-    public Text Ammo;
+    //public Text Ammo;
 
     void Start()
     { if (presentAmmo == -1)
@@ -91,7 +91,7 @@ public class shoot : MonoBehaviour
     }
     private void UpdateAmmo()
     {
-       Ammo.text = $"{presentAmmo}: " + presentAmmo.ToString();
+       //Ammo.text = $"{presentAmmo}: " + presentAmmo.ToString();
     }
    
 

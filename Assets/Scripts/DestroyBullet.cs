@@ -13,11 +13,6 @@ public class DestroyBullet : MonoBehaviour
 
     public void OnCollisionEnter(UnityEngine.Collision collision)
     {
-        if (collision.gameObject.tag == "Bullet") // Collision made will destroy bullet
-        {
-
-
-            Destroy(collision.gameObject);
-        }
+        Destroy(gameObject);
     }
 }

@@ -17,6 +17,11 @@ public class RigidBodyMovement : MonoBehaviour
     [SerializeField] private float Sensitivity;
     [SerializeField] private float Jumpforce;
 
+    void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
     // Update is called once per frame
     void Update()
     {
