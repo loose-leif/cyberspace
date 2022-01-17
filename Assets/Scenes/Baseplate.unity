@@ -1468,19 +1468,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 906511687}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6163dc1c68916a4469045322f5162169, type: 3}
+  m_Script: {fileID: 11500000, guid: d96b8148051e8b249ae877ff40ed2bc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bullet_Emitter: {fileID: 0}
-  Bullet: {fileID: 0}
-  bombll: {fileID: 0}
-  Bullet_Forward_Force: 100
-  bombll_Forward_Force: 100
-  maxAmmo: 0
-  reloadTime: 2
-  Ammo: {fileID: 0}
+  Bullet: {fileID: 906511687}
 --- !u!1 &944039306
 GameObject:
   m_ObjectHideFlags: 0
@@ -2537,7 +2530,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 00b64bf1d0f4bdc42a1bdcffbac0960b, type: 2}
+  - {fileID: 2100000, guid: ee64a9a58bfcbcb4eb28dcfcac1311fa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3496,7 +3489,7 @@ MonoBehaviour:
   bombll: {fileID: 829624399}
   Bullet_Forward_Force: 150
   bombll_Forward_Force: 100
-  maxAmmo: 10
+  maxAmmo: 50
   reloadTime: 4
   Ammo: {fileID: 0}
 --- !u!65 &6526834824218913982
@@ -3512,6 +3505,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6526834824218913983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6526834824218913980}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d96b8148051e8b249ae877ff40ed2bc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Bullet: {fileID: 906511687}
 --- !u!1001 &6700884866813126539
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3519,6 +3525,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 745961218}
     m_Modifications:
+    - target: {fileID: 394635659764744492, guid: df33e6e7932453440af92771c53d9a40, type: 3}
+      propertyPath: m_TagString
+      value: Bullet
+      objectReference: {fileID: 0}
     - target: {fileID: 463214326100544311, guid: df33e6e7932453440af92771c53d9a40, type: 3}
       propertyPath: m_Name
       value: Cool gun

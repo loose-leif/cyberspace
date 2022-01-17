@@ -56,7 +56,7 @@ public class shoot : MonoBehaviour
             Rigidbody temp_rb; //access rigidbody from instantiated() bullet
             temp_rb = Temp_bullet_Handler.GetComponent<Rigidbody>();
             temp_rb.AddForce(transform.forward * Bullet_Forward_Force); // bullet force 
-            Destroy(Temp_bullet_Handler,3.0f);
+            Destroy(Temp_bullet_Handler,20.0f);
 
 
         }
@@ -72,6 +72,7 @@ public class shoot : MonoBehaviour
             Destroy(Temp_bombll_Handler, 3.0f);
 
         }
+        
         IEnumerator reload() // the time it takes to reload and resets presentAmmo
         {
             Debug.Log("Reloading...");
@@ -85,12 +86,13 @@ public class shoot : MonoBehaviour
 
 
         }
-        
+        UpdateAmmo();
 
     }
-    //private void UpdateAmmo()
-   // {
-       // Ammo.text = $"{presentAmmo}: " + presentAmmo.ToString();
-    //}
+    private void UpdateAmmo()
+    {
+       Ammo.text = $"{presentAmmo}: " + presentAmmo.ToString();
+    }
+   
 
 }

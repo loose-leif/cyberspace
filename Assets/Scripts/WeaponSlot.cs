@@ -47,4 +47,8 @@ public class WeaponSlot : MonoBehaviour
             i++;
         }
     }
+    public void FixedUpdate()
+    {
+        
+    }
 }
