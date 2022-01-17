@@ -8,6 +8,8 @@ public class RigidBodyMovement : MonoBehaviour
     private Vector3 PlayerMouseInput;
     private float xRot;
     
+    public InventoryObject inventory;
+
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private Transform FeetTransform;
     [SerializeField] private Transform PlayerCamera;
@@ -22,15 +24,6 @@ public class RigidBodyMovement : MonoBehaviour
     {
         PlayerMovementInput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
         PlayerMouseInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
-
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            if(TryGetComponent<ItemObject>(out ItemObject item))
-            {
-                item.OnHandlePickupItem();
-            }
-        }
 
         MovePlayer();
         MovePlayerCamera();
@@ -59,6 +52,22 @@ public class RigidBodyMovement : MonoBehaviour
         transform.Rotate(0f, PlayerMouseInput.x * Sensitivity, 0f);
         PlayerCamera.transform.localRotation = Quaternion.Euler(xRot, 0f, 0f);
         
+    }
+
+    //Inventory functions
+    public void OnTriggerEnter(Collider other)
+    {
+        var item = other.GetComponent<Item>();
+        if (item)
+        {
+            inventory.AddItem(item.item, 1);
+            Destroy(other.gameObject);
+        }
+    }
+
+    public void OnApplicationQuit()
+    {
+        inventory.Container.Clear();
     }
 
 }
