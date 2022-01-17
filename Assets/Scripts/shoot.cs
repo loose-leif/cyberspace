@@ -16,12 +16,15 @@ public class shoot : MonoBehaviour
     public float reloadTime = 2f;
     private bool isreloading = false;
     private int presentAmmo = -1;
+    GameObject[] Ammo;
+
     //public Text Ammo;
 
     void Start()
     { if (presentAmmo == -1)
             presentAmmo = maxAmmo;
-
+        Ammo = GameObject.FindGameObjectsWithTag("Ammo");
+        
     }
 
     // Update is called once per frame
@@ -86,13 +89,31 @@ public class shoot : MonoBehaviour
 
 
         }
-        UpdateAmmo();
+        if (presentAmmo > maxAmmo)
+        {
+            presentAmmo = maxAmmo;
+        }
+        
+        
 
     }
+    
     private void UpdateAmmo()
     {
        //Ammo.text = $"{presentAmmo}: " + presentAmmo.ToString();
     }
-   
+    public void OnTriggerEnter(Collider other)
+    {
+        if( other.gameObject.tag == "Ammo")
+        {
+            presentAmmo = maxAmmo;
+            Destroy(other.gameObject);
+
+
+        }
+
+        
+    }
+
 
 }
