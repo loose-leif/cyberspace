@@ -54,5 +54,17 @@ public class RigidBodyMovement : MonoBehaviour
         PlayerCamera.transform.localRotation = Quaternion.Euler(xRot, 0f, 0f);
         
     }
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Ammo")
+        {
+            
+            Destroy(other.gameObject);
+
+
+        }
+
+
+    }
 
 }

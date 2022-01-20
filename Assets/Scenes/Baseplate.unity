@@ -3311,7 +3311,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3822864202673832569, guid: d26bb81e08d5a5c42a02c7204b633e46, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3822864202673832570, guid: d26bb81e08d5a5c42a02c7204b633e46, type: 3}
       propertyPath: Bullet
@@ -3327,7 +3327,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3822864202673832570, guid: d26bb81e08d5a5c42a02c7204b633e46, type: 3}
       propertyPath: ammoClips
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3822864202673832570, guid: d26bb81e08d5a5c42a02c7204b633e46, type: 3}
       propertyPath: Bullet_Forward_Force
