@@ -54,4 +54,5 @@ public class RigidBodyMovement : MonoBehaviour
         PlayerCamera.transform.localRotation = Quaternion.Euler(xRot, 0f, 0f);
         
     }
+
 }

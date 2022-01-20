@@ -383,7 +383,7 @@ GameObject:
   - component: {fileID: 270884811}
   - component: {fileID: 270884810}
   - component: {fileID: 270884809}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -567,7 +567,7 @@ GameObject:
   - component: {fileID: 512850705}
   - component: {fileID: 512850704}
   - component: {fileID: 512850703}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -644,7 +644,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 512850702}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.79019815, y: 1.98, z: -31.57}
+  m_LocalPosition: {x: 0.79019815, y: 1.98, z: -29.51}
   m_LocalScale: {x: 10, y: 1, z: 1}
   m_Children:
   - {fileID: 270884812}
@@ -849,7 +849,7 @@ GameObject:
   - component: {fileID: 732408279}
   - component: {fileID: 732408278}
   - component: {fileID: 732408277}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1127,7 +1127,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 842101387}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 418e8bd67089f234fb0bc104d9977fe3, type: 3}
   m_Name: 
@@ -1162,7 +1162,7 @@ GameObject:
   - component: {fileID: 850684300}
   - component: {fileID: 850684299}
   - component: {fileID: 850684298}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1654,6 +1654,7 @@ GameObject:
   - component: {fileID: 1211251795}
   - component: {fileID: 1211251794}
   - component: {fileID: 1211251793}
+  - component: {fileID: 1211251797}
   m_Layer: 0
   m_Name: Ammo
   m_TagString: Ammo
@@ -1737,6 +1738,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1211251797
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1211251792}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 14
+  m_CollisionDetection: 1
 --- !u!1001 &1222691177
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1867,7 +1884,7 @@ GameObject:
   - component: {fileID: 1467454589}
   m_Layer: 6
   m_Name: 'Collectible '
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1983,6 +2000,7 @@ MonoBehaviour:
   bombll_Forward_Force: 100
   maxAmmo: 0
   reloadTime: 2
+  ammoClips: 4
 --- !u!1 &1497467918
 GameObject:
   m_ObjectHideFlags: 0
@@ -2248,7 +2266,7 @@ GameObject:
   - component: {fileID: 1743404938}
   - component: {fileID: 1743404937}
   - component: {fileID: 1743404936}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2344,7 +2362,7 @@ GameObject:
   - component: {fileID: 1825716844}
   - component: {fileID: 1825716843}
   - component: {fileID: 1825716842}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2816,6 +2834,7 @@ MonoBehaviour:
   bombll_Forward_Force: 100
   maxAmmo: 0
   reloadTime: 2
+  ammoClips: 4
 --- !u!54 &1924550313
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3195,7 +3214,7 @@ GameObject:
   - component: {fileID: 2043942551}
   - component: {fileID: 2043942550}
   - component: {fileID: 2043942549}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3305,6 +3324,10 @@ PrefabInstance:
     - target: {fileID: 3822864202673832570, guid: d26bb81e08d5a5c42a02c7204b633e46, type: 3}
       propertyPath: maxAmmo
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3822864202673832570, guid: d26bb81e08d5a5c42a02c7204b633e46, type: 3}
+      propertyPath: ammoClips
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3822864202673832570, guid: d26bb81e08d5a5c42a02c7204b633e46, type: 3}
       propertyPath: Bullet_Forward_Force

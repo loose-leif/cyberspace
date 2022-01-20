@@ -16,6 +16,7 @@ public class shoot : MonoBehaviour
     public float reloadTime = 2f;
     private bool isreloading = false;
     private int presentAmmo = -1;
+    public int ammoClips = 4; 
     GameObject[] Ammo;
 
     //public Text Ammo;
@@ -78,16 +79,19 @@ public class shoot : MonoBehaviour
         
         IEnumerator reload() // the time it takes to reload and resets presentAmmo
         {
-            Debug.Log("Reloading...");
-            isreloading = true;
-            yield return new WaitForSeconds(reloadTime); // reloading...
-            presentAmmo = maxAmmo;// reset
-            isreloading = false;
-            Debug.Log("Finished");
+            if (ammoClips >= 0)
+            {
+                Debug.Log("Reloading...");
+                isreloading = true;
+                yield return new WaitForSeconds(reloadTime); // reloading...
+                presentAmmo = maxAmmo;// reset
+                isreloading = false;
+                Debug.Log("Finished");
+                ammoClips = ammoClips - 1; // decreases ammo clips
 
 
 
-
+            }
         }
         if (presentAmmo > maxAmmo)
         {
@@ -106,7 +110,7 @@ public class shoot : MonoBehaviour
     {
         if( other.gameObject.tag == "Ammo")
         {
-            presentAmmo = maxAmmo;
+            ammoClips++;
             Destroy(other.gameObject);
 
 
