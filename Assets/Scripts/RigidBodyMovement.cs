@@ -7,6 +7,8 @@ public class RigidBodyMovement : MonoBehaviour
     private Vector3 PlayerMovementInput;
     private Vector3 PlayerMouseInput;
     private float xRot;
+    private shoot Clips;
+    public GameObject Ammo;
 
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private Transform FeetTransform;
@@ -20,6 +22,8 @@ public class RigidBodyMovement : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        Clips = GetComponent<shoot>();
+        
     }
 
     // Update is called once per frame
@@ -27,7 +31,7 @@ public class RigidBodyMovement : MonoBehaviour
     {
         PlayerMovementInput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
         PlayerMouseInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
-
+       
         MovePlayer();
         MovePlayerCamera();
     }
@@ -54,12 +58,14 @@ public class RigidBodyMovement : MonoBehaviour
         PlayerCamera.transform.localRotation = Quaternion.Euler(xRot, 0f, 0f);
         
     }
-    public void OnTriggerEnter(Collider other)
+    public void OnCollisionEnter(Collider other)
     {
         if (other.gameObject.tag == "Ammo")
         {
             
-            Destroy(other.gameObject);
+         // Destroy(other.gameObject);
+            Clips.ammoClips++;
+            Debug.Log(Clips.ammoClips);
 
 
         }
