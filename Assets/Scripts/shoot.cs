@@ -53,7 +53,7 @@ public class shoot : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             presentAmmo--;
-           
+            Debug.Log("shooting");
             GameObject Temp_bullet_Handler; // bullet happen
             Temp_bullet_Handler = Instantiate(Bullet, Bullet_Emitter.transform.position, Bullet_Emitter.transform.rotation) as GameObject; //specifies object and postion to instantiate
             Temp_bullet_Handler.transform.Rotate(Vector3.left * 90); // rotation fix
