@@ -3311,11 +3311,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3822864202673832570, guid: d26bb81e08d5a5c42a02c7204b633e46, type: 3}
       propertyPath: ammoClips
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3822864202673832570, guid: d26bb81e08d5a5c42a02c7204b633e46, type: 3}
       propertyPath: Bullet_Forward_Force
-      value: 500
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 3822864202673832571, guid: d26bb81e08d5a5c42a02c7204b633e46, type: 3}
       propertyPath: m_Name
@@ -3326,8 +3326,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4169543363857974229, guid: d26bb81e08d5a5c42a02c7204b633e46, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0065
+      objectReference: {fileID: 0}
+    - target: {fileID: 4169543363857974229, guid: d26bb81e08d5a5c42a02c7204b633e46, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.58
+      value: 0.5842
       objectReference: {fileID: 0}
     - target: {fileID: 4487373105406023873, guid: d26bb81e08d5a5c42a02c7204b633e46, type: 3}
       propertyPath: m_RootOrder
