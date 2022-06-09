@@ -15,6 +15,8 @@ public class TestDriver : MonoBehaviour
     public bool StopButton;
     public bool RebuildNavMesh;
 
+    public Transform trans;
+
     public static TestDriver main;
     TestDriver()
     {
@@ -47,6 +49,8 @@ public class TestDriver : MonoBehaviour
     private void Update()
     {
         zombie.UpdateTargetPos = transform.position;
+
+        transform.position = transform.position + (new Vector3(4*Mathf.Cos(Time.time), 0, 4*Mathf.Sin(Time.time)))*(Time.deltaTime*.5f);                          
 
         if (RebuildNavMesh)
         {
