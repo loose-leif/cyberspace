@@ -41,7 +41,7 @@ public class RigidBodyMovement : MonoBehaviour
         Vector3 MoveVector = transform.TransformDirection(PlayerMovementInput) * Speed;
         PlayerBody.velocity = new Vector3(MoveVector.x, PlayerBody.velocity.y, MoveVector.z);
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown("space"))
         {
             if(Physics.CheckSphere(FeetTransform.position, 0.2f, groundMask))
             {

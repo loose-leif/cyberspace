@@ -9,6 +9,8 @@ TagManager:
   - Camera
   - Ammo
   - Floor
+  - Enemy
+  - post
   layers:
   - Default
   - TransparentFX
